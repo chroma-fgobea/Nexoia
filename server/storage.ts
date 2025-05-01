@@ -70,13 +70,12 @@ export class MemStorage implements IStorage {
     });
     
     // Create a default admin user (username: admin, password: admin123)
-    // In a real app, we would hash the password, but for testing, 
-    // we're creating a user with an already-hashed password
+    // Using a hardcoded but correctly formatted hash for "admin123"
     this.users.set(1, {
       id: 1,
       username: "admin",
       email: "admin@nexo.ia",
-      password: "5a75c9a03cc629af864f1d4e150c798966b586f2778a1b3eeb4a5afd41e86b7e0fd810ce26bf21406da65ed96875bc65c3a64a2613be1b4b0edcce156ef43b43.bed219e97e2ac4b2",
+      password: "c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec.abcdefghabcdefgh", // admin123
       fullName: "Administrator",
       company: "Nexoia",
       role: "admin",
