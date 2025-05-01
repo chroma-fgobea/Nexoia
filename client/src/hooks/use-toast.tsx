@@ -1,14 +1,6 @@
-// This is a simplified no-op version 
-// We're moving to Next.js App router anyway
+// Adapted from shadcn/ui toast hooks
+import { useToast as useToastPrimitive } from "../components/ui/use-toast";
 
 export function useToast() {
-  return {
-    toast: ({ title, description, variant }: { 
-      title: string, 
-      description?: string, 
-      variant?: 'default' | 'destructive' 
-    }) => {
-      console.log(`Toast: ${title} - ${description}`);
-    },
-  };
+  return useToastPrimitive();
 }
