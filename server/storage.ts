@@ -69,15 +69,24 @@ export class MemStorage implements IStorage {
       checkPeriod: 86400000, // prune expired entries every 24h
     });
     
-    // Create a default admin user
-    this.createUser({
+    // Create a default admin user (username: admin, password: admin123)
+    // In a real app, we would hash the password, but for testing, 
+    // we're creating a user with an already-hashed password
+    this.users.set(1, {
+      id: 1,
       username: "admin",
       email: "admin@nexo.ia",
-      password: "admin123",
+      password: "5a75c9a03cc629af864f1d4e150c798966b586f2778a1b3eeb4a5afd41e86b7e0fd810ce26bf21406da65ed96875bc65c3a64a2613be1b4b0edcce156ef43b43.bed219e97e2ac4b2",
       fullName: "Administrator",
+      company: "Nexoia",
       role: "admin",
-      company: "Nexo.ia"
+      status: "active",
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
+    
+    // Increment the user ID counter since we added a user
+    this.userCurrentId = 2;
     
     // Create sample bots
     this.createBot({
