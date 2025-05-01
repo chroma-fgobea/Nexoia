@@ -3,7 +3,6 @@ import { Redirect } from "wouter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { insertUserSchema } from "@shared/schema";
 import { useAuth } from "../hooks/use-auth";
 import MainLayout from "../components/layout/main-layout";
 import { Button } from "../components/ui/button";
@@ -38,11 +37,20 @@ const loginSchema = z.object({
 });
 
 // Register form schema
-const registerSchema = insertUserSchema.extend({
+const registerSchema = z.object({
+  username: z.string({ required_error: "El nombre de usuario es obligatorio" }).min(3, {
+    message: "El nombre de usuario debe tener al menos 3 caracteres",
+  }),
+  email: z.string({ required_error: "El correo electrónico es obligatorio" }).email({
+    message: "Ingresa un correo electrónico válido",
+  }),
   password: z.string({ required_error: "La contraseña es obligatoria" }).min(6, {
     message: "La contraseña debe tener al menos 6 caracteres",
   }),
   confirmPassword: z.string({ required_error: "Confirma tu contraseña" }),
+  fullName: z.string().optional(),
+  company: z.string().optional(),
+  role: z.string().optional()
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Las contraseñas no coinciden",
   path: ["confirmPassword"],

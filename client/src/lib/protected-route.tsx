@@ -1,7 +1,7 @@
 import { Loader2 } from "lucide-react";
 import { Redirect, Route } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { getQueryFn } from "../lib/queryClient";
+import { getQueryFn } from "./queryClient";
 
 export function ProtectedRoute({
   path,

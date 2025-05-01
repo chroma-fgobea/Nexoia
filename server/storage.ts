@@ -81,8 +81,7 @@ export class MemStorage implements IStorage {
       company: "Nexoia",
       role: "admin",
       status: "active",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: new Date()
     });
     
     // Increment the user ID counter since we added a user

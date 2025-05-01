@@ -1,6 +1,13 @@
-// Adapted from shadcn/ui toast hooks
-import { useToast as useToastPrimitive } from "../components/ui/use-toast";
-
+// Simplified toast hook for dev purposes
 export function useToast() {
-  return useToastPrimitive();
+  return {
+    toast: ({ title, description, variant }: { 
+      title: string, 
+      description?: string, 
+      variant?: 'default' | 'destructive' 
+    }) => {
+      console.log(`Toast: ${title} - ${description || ''} (${variant || 'default'})`);
+    },
+    toasts: []
+  };
 }
