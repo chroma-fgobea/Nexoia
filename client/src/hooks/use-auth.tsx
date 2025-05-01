@@ -4,9 +4,29 @@ import {
   useMutation,
   UseMutationResult,
 } from "@tanstack/react-query";
-import type { User as SelectUser, InsertUser } from "../../shared/schema";
 import { getQueryFn, apiRequest, queryClient } from "../lib/queryClient";
 import { useToast } from "./use-toast";
+
+// Define these types here to avoid import issues
+type SelectUser = {
+  id: number;
+  username: string;
+  email: string;
+  fullName: string | null;
+  role: string | null;
+  company: string | null;
+  status: string | null;
+  createdAt: Date | null;
+};
+
+type InsertUser = {
+  username: string;
+  email: string;
+  password: string;
+  fullName?: string | null;
+  company?: string | null;
+  role?: string | null;
+};
 
 type AuthContextType = {
   user: SelectUser | null;
