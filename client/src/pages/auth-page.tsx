@@ -4,9 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { insertUserSchema } from "@shared/schema";
-import { useAuth } from "@/hooks/use-auth";
-import MainLayout from "@/components/layout/main-layout";
-import { Button } from "@/components/ui/button";
+import { useAuth } from "../hooks/use-auth";
+import MainLayout from "../components/layout/main-layout";
+import { Button } from "../components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,8 +14,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "../components/ui/form";
+import { Input } from "../components/ui/input";
 import {
   Card,
   CardContent,
@@ -23,8 +23,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "../components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Loader2 } from "lucide-react";
 
 // Login form schema
