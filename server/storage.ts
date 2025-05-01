@@ -1,6 +1,6 @@
 import { users, type User, type InsertUser, bots, type Bot, type InsertBot, messages, type Message, type InsertMessage, testLinks, type TestLink, type InsertTestLink } from "../shared/schema";
 import createMemoryStore from "memorystore";
-import session from "express-session";
+import * as session from "express-session";
 
 const MemoryStore = createMemoryStore(session);
 
@@ -126,7 +126,15 @@ export class MemStorage implements IStorage {
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.userCurrentId++;
     const createdAt = new Date();
-    const user: User = { ...insertUser, id, createdAt, status: "active" };
+    const user: User = { 
+      ...insertUser, 
+      id, 
+      createdAt, 
+      status: "active",
+      role: insertUser.role || null,
+      fullName: insertUser.fullName || null,
+      company: insertUser.company || null
+    };
     this.users.set(id, user);
     return user;
   }
@@ -162,7 +170,12 @@ export class MemStorage implements IStorage {
   async createBot(insertBot: InsertBot): Promise<Bot> {
     const id = this.botCurrentId++;
     const createdAt = new Date();
-    const bot: Bot = { ...insertBot, id, createdAt };
+    const bot: Bot = { 
+      ...insertBot, 
+      id, 
+      createdAt,
+      description: insertBot.description || null
+    };
     this.bots.set(id, bot);
     return bot;
   }
@@ -200,7 +213,12 @@ export class MemStorage implements IStorage {
   async createMessage(insertMessage: InsertMessage): Promise<Message> {
     const id = this.messageCurrentId++;
     const createdAt = new Date();
-    const message: Message = { ...insertMessage, id, createdAt };
+    const message: Message = { 
+      ...insertMessage, 
+      id, 
+      createdAt,
+      userId: insertMessage.userId || null
+    };
     this.messages.set(id, message);
     return message;
   }
@@ -230,7 +248,14 @@ export class MemStorage implements IStorage {
     const id = this.testLinkCurrentId++;
     const createdAt = new Date();
     const isActive = true;
-    const testLink: TestLink = { ...insertTestLink, id, createdAt, isActive };
+    const testLink: TestLink = { 
+      ...insertTestLink, 
+      id, 
+      createdAt, 
+      isActive,
+      botId: insertTestLink.botId || null,
+      expiresAt: insertTestLink.expiresAt || null
+    };
     this.testLinks.set(id, testLink);
     return testLink;
   }
