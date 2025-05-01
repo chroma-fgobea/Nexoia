@@ -1,13 +1,12 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
+import { CheckCircle2, Database, FileText, LayoutDashboard, MessagesSquare, Settings } from 'lucide-react'
 import { MainNav } from '../components/layout/main-nav'
 import { Footer } from '../components/layout/footer'
-import { BookOpen, Bot, Zap, Search, MessageSquare, Code } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Cómo Funciona | Nexoia',
-  description: 'Descubre cómo Nexoia transforma tu documentación técnica en chatbots inteligentes con IA.',
+  title: 'Cómo funciona Nexoia | Chatbots IA para documentación técnica',
+  description: 'Descubre cómo Nexoia convierte tu documentación técnica en chatbots inteligentes. Proceso sencillo en 3 pasos: subir, configurar e integrar.',
 }
 
 export default function HowItWorksPage() {
@@ -16,169 +15,237 @@ export default function HowItWorksPage() {
       <MainNav />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-12 md:py-20 lg:py-24 bg-gradient-to-b from-background to-secondary/20">
+        <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-background to-secondary/20">
           <div className="container px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Cómo Funciona Nexoia
+                Cómo funciona Nexoia
               </h1>
               <p className="mt-4 text-xl text-muted-foreground">
-                Convertimos documentación técnica compleja en asistentes virtuales inteligentes en minutos
+                Convertir tu documentación técnica en un chatbot inteligente es más fácil de lo que piensas. Te explicamos el proceso paso a paso.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Process Steps */}
-        <section className="py-12 md:py-16 lg:py-20">
+        {/* Process Overview */}
+        <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-8 md:gap-12">
-              {/* Step 1 */}
-              <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary shrink-0">
-                  <BookOpen className="w-6 h-6" />
-                </div>
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold">1. Sube tu documentación</h2>
-                  <p className="text-muted-foreground">
-                    Sube tus manuales técnicos, guías de usuario, FAQs o cualquier documento relevante a través de nuestra 
-                    interfaz intuitiva. Soportamos una variedad de formatos incluyendo PDF, DOCX, HTML y Markdown.
-                  </p>
-                  <div className="bg-card border rounded-lg p-4">
-                    <h3 className="font-semibold mb-2">Formatos compatibles:</h3>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                      <li>Documentos PDF</li>
-                      <li>Archivos Word (DOCX)</li>
-                      <li>Páginas HTML</li>
-                      <li>Archivos Markdown</li>
-                      <li>Texto plano (TXT)</li>
-                    </ul>
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 rounded-full bg-primary/10 p-3">
+                    <FileText className="h-8 w-8 text-primary" />
                   </div>
+                  <h3 className="text-xl font-bold">1. Sube tu documentación</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Carga tus manuales técnicos, guías de usuario o cualquier documentación en diversos formatos.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 rounded-full bg-primary/10 p-3">
+                    <Settings className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">2. Configura tu chatbot</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Personaliza la apariencia y comportamiento de tu chatbot para que se adapte a tus necesidades.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 rounded-full bg-primary/10 p-3">
+                    <MessagesSquare className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">3. Integra y comparte</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Añade el chatbot a tu sitio web o comparte enlaces directos con tus usuarios o equipo.
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Step 2 */}
-              <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary shrink-0">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold">2. Procesamiento con IA</h2>
-                  <p className="text-muted-foreground">
-                    Nuestro sistema analiza y procesa automáticamente tu documentación utilizando tecnología avanzada de 
-                    procesamiento de lenguaje natural. Indexamos el contenido para crear una base de conocimiento 
-                    inteligente y estructurada.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                    <div className="bg-card border rounded-lg p-4 space-y-2">
-                      <Search className="w-5 h-5 text-primary" />
-                      <h4 className="font-medium">Indexación</h4>
-                      <p className="text-sm text-muted-foreground">Extracción inteligente de información clave</p>
+        {/* Detailed Process */}
+        <section className="py-16 md:py-24 bg-muted/30">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">
+                El proceso en detalle
+              </h2>
+
+              <div className="space-y-16">
+                {/* Step 1 */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="md:w-1/3 flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-medium text-lg">
+                        1
+                      </span>
+                      <h3 className="text-xl font-bold">Subir documentación</h3>
                     </div>
-                    <div className="bg-card border rounded-lg p-4 space-y-2">
-                      <MessageSquare className="w-5 h-5 text-primary" />
-                      <h4 className="font-medium">Contextualización</h4>
-                      <p className="text-sm text-muted-foreground">Comprensión semántica del contenido</p>
-                    </div>
-                    <div className="bg-card border rounded-lg p-4 space-y-2">
-                      <Code className="w-5 h-5 text-primary" />
-                      <h4 className="font-medium">Optimización</h4>
-                      <p className="text-sm text-muted-foreground">Preparación para respuestas en tiempo real</p>
+                  </div>
+                  <div className="md:w-2/3">
+                    <div className="space-y-4">
+                      <p>
+                        Comienza subiendo tu documentación técnica a la plataforma. Nexoia acepta múltiples formatos para que puedas trabajar con tus archivos existentes.
+                      </p>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                        <div className="border rounded-lg p-3 flex flex-col items-center justify-center text-center bg-card">
+                          <FileText className="h-6 w-6 mb-2 text-primary" />
+                          <span className="text-sm font-medium">PDF</span>
+                        </div>
+                        <div className="border rounded-lg p-3 flex flex-col items-center justify-center text-center bg-card">
+                          <FileText className="h-6 w-6 mb-2 text-primary" />
+                          <span className="text-sm font-medium">Word (.docx)</span>
+                        </div>
+                        <div className="border rounded-lg p-3 flex flex-col items-center justify-center text-center bg-card">
+                          <FileText className="h-6 w-6 mb-2 text-primary" />
+                          <span className="text-sm font-medium">HTML</span>
+                        </div>
+                        <div className="border rounded-lg p-3 flex flex-col items-center justify-center text-center bg-card">
+                          <FileText className="h-6 w-6 mb-2 text-primary" />
+                          <span className="text-sm font-medium">Markdown</span>
+                        </div>
+                        <div className="border rounded-lg p-3 flex flex-col items-center justify-center text-center bg-card">
+                          <FileText className="h-6 w-6 mb-2 text-primary" />
+                          <span className="text-sm font-medium">URL/Web</span>
+                        </div>
+                        <div className="border rounded-lg p-3 flex flex-col items-center justify-center text-center bg-card">
+                          <Database className="h-6 w-6 mb-2 text-primary" />
+                          <span className="text-sm font-medium">API</span>
+                        </div>
+                      </div>
+                      <div className="bg-accent/50 p-4 rounded-lg">
+                        <h4 className="font-medium mb-2">Lo que ocurre en segundo plano:</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Nexoia procesa automáticamente tu documentación, extrayendo y organizando el conocimiento para que pueda ser utilizado por el chatbot. El sistema comprende la estructura de la información, identifica secciones importantes y crea un índice semántico para proporcionar respuestas precisas.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Step 3 */}
-              <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary shrink-0">
-                  <Bot className="w-6 h-6" />
-                </div>
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold">3. Creación y configuración del chatbot</h2>
-                  <p className="text-muted-foreground">
-                    Personaliza tu chatbot definiendo su nombre, imagen, comportamiento y estilo de respuesta. 
-                    Configura reglas específicas para adaptarlo a las necesidades exactas de tu audiencia.
-                  </p>
-                  <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-card p-4 border-b">
-                      <h3 className="font-semibold">Panel de configuración</h3>
+                {/* Step 2 */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="md:w-1/3 flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-medium text-lg">
+                        2
+                      </span>
+                      <h3 className="text-xl font-bold">Configurar chatbot</h3>
                     </div>
-                    <div className="p-4 space-y-4">
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium">Nombre del bot</label>
-                        <div className="h-9 rounded bg-muted/40 w-full"></div>
+                  </div>
+                  <div className="md:w-2/3">
+                    <div className="space-y-4">
+                      <p>
+                        Personaliza todos los aspectos de tu chatbot desde el panel de control intuitivo, sin necesidad de conocimientos técnicos.
+                      </p>
+                      <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                        <div className="border rounded-lg p-4 bg-card">
+                          <h4 className="font-medium mb-2">Apariencia</h4>
+                          <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                              <span>Personalización de colores y tema</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                              <span>Personalización de avatar</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                              <span>Mensajes de bienvenida personalizados</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="border rounded-lg p-4 bg-card">
+                          <h4 className="font-medium mb-2">Comportamiento</h4>
+                          <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                              <span>Ajuste del tono conversacional</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                              <span>Configuración de respuestas fallback</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                              <span>Personalización del nivel de detalle</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium">Personalidad</label>
-                        <div className="h-9 rounded bg-muted/40 w-full"></div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium">Documentos asociados</label>
-                        <div className="h-16 rounded bg-muted/40 w-full"></div>
+                      <div className="mt-4 border rounded-lg p-4 bg-card">
+                        <h4 className="font-medium mb-2">Panel de control</h4>
+                        <div className="p-4 border bg-muted rounded-md flex items-center justify-center h-48">
+                          <LayoutDashboard className="h-16 w-16 text-muted-foreground/30" />
+                        </div>
+                        <p className="mt-2 text-sm text-muted-foreground">
+                          El panel de control intuitivo te permite configurar y gestionar todos los aspectos de tus chatbots, visualizar estadísticas y realizar mejoras continuas.
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Step 4 */}
-              <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary shrink-0">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-6 h-6"
-                  >
-                    <rect width="18" height="18" x="3" y="3" rx="2" />
-                    <path d="M7 7h.01" />
-                    <path d="M11 7h.01" />
-                    <path d="M15 7h.01" />
-                    <path d="M7 11h.01" />
-                    <path d="M11 11h.01" />
-                    <path d="M15 11h.01" />
-                    <path d="M7 15h.01" />
-                    <path d="M11 15h.01" />
-                    <path d="M15 15h.01" />
-                  </svg>
-                </div>
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold">4. Integración y despliegue</h2>
-                  <p className="text-muted-foreground">
-                    Implementa el chatbot en tu página web, portal de soporte o cualquier plataforma digital mediante 
-                    nuestro código de integración. También puedes compartirlo directamente a través de enlaces personalizados.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="border rounded-lg p-4 space-y-2">
-                      <h4 className="font-medium">Integración web</h4>
-                      <div className="bg-card border rounded p-3">
-                        <code className="text-xs text-muted-foreground">
-                          &lt;script src="https://nexoia.app/bot.js?id=your-bot-id"&gt;&lt;/script&gt;
-                        </code>
-                      </div>
+                {/* Step 3 */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="md:w-1/3 flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-medium text-lg">
+                        3
+                      </span>
+                      <h3 className="text-xl font-bold">Integrar y compartir</h3>
                     </div>
-                    <div className="border rounded-lg p-4 space-y-2">
-                      <h4 className="font-medium">Enlaces directos</h4>
-                      <div className="flex items-center bg-card border rounded p-3">
-                        <div className="text-xs text-muted-foreground truncate flex-1">https://nexoia.app/bot/demo12345</div>
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          className="w-4 h-4 ml-2 text-primary"
-                        >
-                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-                        </svg>
+                  </div>
+                  <div className="md:w-2/3">
+                    <div className="space-y-4">
+                      <p>
+                        Una vez configurado, puedes integrar tu chatbot en tu sitio web o compartirlo directamente con tus usuarios o equipo.
+                      </p>
+                      <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                        <div className="border rounded-lg p-4 bg-card">
+                          <h4 className="font-medium mb-2">Integración en web</h4>
+                          <div className="bg-muted p-3 rounded-md text-xs font-mono overflow-x-auto">
+                            &lt;script src="https://nexoia.app/bot.js?id=your-bot-id"&gt;&lt;/script&gt;
+                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground">
+                            Un simple fragmento de código añade el chatbot a cualquier página web. El chatbot aparecerá como un icono flotante que los usuarios pueden abrir cuando necesiten ayuda.
+                          </p>
+                        </div>
+                        <div className="border rounded-lg p-4 bg-card">
+                          <h4 className="font-medium mb-2">Enlaces directos</h4>
+                          <div className="bg-muted p-3 rounded-md text-xs font-mono break-all">
+                            https://chat.nexoia.app/s/abc123
+                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground">
+                            Crea y comparte enlaces a chatbots específicos. Ideal para incluir en correos electrónicos, documentación o canales de soporte.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="bg-accent/50 p-4 rounded-lg">
+                        <h4 className="font-medium mb-2">Opciones avanzadas:</h4>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li className="flex items-start gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                            <span>
+                              <span className="font-medium">API completa:</span> Para integraciones personalizadas y casos de uso avanzados.
+                            </span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                            <span>
+                              <span className="font-medium">Control de acceso:</span> Limita el uso de chatbots específicos a usuarios autorizados.
+                            </span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                            <span>
+                              <span className="font-medium">Integraciones externas:</span> Conéctalo con Slack, Teams, Discord y otras plataformas.
+                            </span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -189,176 +256,124 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-12 md:py-16 bg-secondary/30">
+        <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold">Beneficios de Nexoia</h2>
-              <p className="text-muted-foreground mt-2">
-                Ventajas que transformarán la forma en que brindas soporte técnico
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold tracking-tighter mb-4">
+                Beneficios de utilizar Nexoia
+              </h2>
+              <p className="text-muted-foreground mb-12">
+                Descubre cómo Nexoia transforma la forma en que los usuarios interactúan con tu documentación técnica.
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Benefit 1 */}
-              <div className="bg-card border rounded-lg p-6 space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5"
-                  >
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Reducción de tickets de soporte</h3>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-bold mb-3">Respuestas precisas</h3>
                 <p className="text-muted-foreground">
-                  Disminuye hasta un 80% las consultas repetitivas, permitiendo a tu equipo enfocarse en problemas más complejos.
+                  Los usuarios obtienen respuestas específicas extraídas directamente de tu documentación, no generalizaciones vagas.
                 </p>
               </div>
-              
-              {/* Benefit 2 */}
-              <div className="bg-card border rounded-lg p-6 space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5"
-                  >
-                    <path d="M12 8v4l3 3" />
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Soporte 24/7</h3>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-bold mb-3">Soporte 24/7</h3>
                 <p className="text-muted-foreground">
-                  Ofrece asistencia instantánea a cualquier hora del día, mejorando la satisfacción del cliente y reduciendo tiempos de espera.
+                  Proporciona asistencia técnica automatizada en cualquier momento, sin límites de horario ni zonas horarias.
                 </p>
               </div>
-              
-              {/* Benefit 3 */}
-              <div className="bg-card border rounded-lg p-6 space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5"
-                  >
-                    <path d="M18 6 7 17l-5-5" />
-                    <path d="m22 10-7.5 7.5L13 16" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Consistencia en las respuestas</h3>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-bold mb-3">Reducción de tickets</h3>
                 <p className="text-muted-foreground">
-                  Garantiza que todas las consultas sean contestadas con información precisa y actualizada basada en tu documentación.
+                  Disminuye significativamente el volumen de consultas repetitivas que llegan a tu equipo de soporte humano.
                 </p>
               </div>
-              
-              {/* Benefit 4 */}
-              <div className="bg-card border rounded-lg p-6 space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5"
-                  >
-                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
-                    <path d="M22 12A10 10 0 0 0 12 2v10z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Análisis de consultas</h3>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-bold mb-3">Experiencia mejorada</h3>
                 <p className="text-muted-foreground">
-                  Obtén insights valiosos sobre las preguntas más frecuentes para mejorar tu documentación y productos.
+                  Los usuarios encuentran información más rápidamente a través de una interfaz conversacional natural.
                 </p>
               </div>
-              
-              {/* Benefit 5 */}
-              <div className="bg-card border rounded-lg p-6 space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5"
-                  >
-                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Implementación rápida</h3>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-bold mb-3">Datos valiosos</h3>
                 <p className="text-muted-foreground">
-                  Configura tu chatbot en minutos, sin necesidad de conocimientos técnicos o programación.
+                  Obtén información sobre las consultas más frecuentes para mejorar tu documentación y productos.
                 </p>
               </div>
-              
-              {/* Benefit 6 */}
-              <div className="bg-card border rounded-lg p-6 space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5"
-                  >
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Mejora de experiencia</h3>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-bold mb-3">Escalabilidad</h3>
                 <p className="text-muted-foreground">
-                  Ofrece a tus usuarios una experiencia más fluida y satisfactoria al resolver sus consultas de forma instantánea.
+                  Gestiona fácilmente volúmenes crecientes de consultas sin necesidad de ampliar tu equipo de soporte.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-16 bg-primary">
-          <div className="container px-4 md:px-6 text-center">
-            <div className="max-w-xl mx-auto space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
-                ¿Listo para transformar tu documentación?
+        {/* FAQs */}
+        <section className="py-16 md:py-24 bg-muted/30">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">
+                Preguntas frecuentes
               </h2>
-              <p className="text-primary-foreground/90">
-                Prueba Nexoia hoy mismo y descubre cómo nuestros chatbots inteligentes pueden revolucionar tu soporte técnico.
+
+              <div className="space-y-6">
+                <div className="border-b pb-6">
+                  <h3 className="text-xl font-medium mb-2">¿Cuánto tiempo lleva implementar un chatbot?</h3>
+                  <p className="text-muted-foreground">
+                    La implementación básica es inmediata: simplemente sube tu documentación, realiza algunas configuraciones básicas y ya puedes compartir tu chatbot. Para configuraciones más avanzadas y personalizaciones, el proceso puede llevar entre unas horas y un par de días, dependiendo de la complejidad.
+                  </p>
+                </div>
+                <div className="border-b pb-6">
+                  <h3 className="text-xl font-medium mb-2">¿Qué pasa si actualizo mi documentación?</h3>
+                  <p className="text-muted-foreground">
+                    Nexoia detecta automáticamente los cambios en tu documentación. Cuando actualizas un documento existente, el sistema procesa los cambios y actualiza la base de conocimiento del chatbot sin necesidad de intervención manual. Esto garantiza que tus usuarios siempre reciban información actualizada.
+                  </p>
+                </div>
+                <div className="border-b pb-6">
+                  <h3 className="text-xl font-medium mb-2">¿Puedo tener varios chatbots para diferentes temas?</h3>
+                  <p className="text-muted-foreground">
+                    Sí, puedes crear múltiples chatbots especializados. Esto es útil si tienes diferentes productos, servicios o audiencias. Cada chatbot puede ser configurado independientemente y basarse en documentación específica relevante para su propósito.
+                  </p>
+                </div>
+                <div className="border-b pb-6">
+                  <h3 className="text-xl font-medium mb-2">¿Qué ocurre si el chatbot no sabe la respuesta?</h3>
+                  <p className="text-muted-foreground">
+                    Puedes configurar el comportamiento del chatbot cuando no encuentra una respuesta precisa. Las opciones incluyen mostrar un mensaje personalizado, sugerir temas relacionados, o escalar la consulta a un agente humano. Además, el sistema aprende de estas situaciones para mejorar continuamente.
+                  </p>
+                </div>
+                <div className="pb-6">
+                  <h3 className="text-xl font-medium mb-2">¿Qué idiomas soporta Nexoia?</h3>
+                  <p className="text-muted-foreground">
+                    Actualmente, Nexoia soporta múltiples idiomas, incluyendo español, inglés, francés, alemán, italiano y portugués. El chatbot responderá en el mismo idioma en que esté escrita la documentación. También puede configurarse para admitir consultas en múltiples idiomas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 md:py-24 bg-primary">
+          <div className="container px-4 md:px-6 text-center">
+            <div className="max-w-[850px] mx-auto space-y-6">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
+                Listo para transformar tu soporte técnico
+              </h2>
+              <p className="text-lg text-primary-foreground/70 md:text-xl">
+                Empieza hoy mismo y descubre lo fácil que es crear chatbots inteligentes basados en tu documentación técnica.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Link 
                   href="/auth" 
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none bg-white text-primary hover:bg-white/90 h-10 px-4 py-2"
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-primary shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                 >
-                  Comenzar prueba gratuita
+                  Comenzar gratis
                 </Link>
                 <Link 
                   href="/pricing" 
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none border border-white bg-transparent text-white hover:bg-white/10 h-10 px-4 py-2"
+                  className="inline-flex h-12 items-center justify-center rounded-md border border-primary-foreground/30 bg-transparent px-8 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                 >
-                  Ver planes y precios
+                  Ver planes
                 </Link>
               </div>
             </div>

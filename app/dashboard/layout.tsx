@@ -1,157 +1,131 @@
 'use client'
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
-import Link from "next/link"
-import { UserCircle, BookOpen, Bot, BarChart3, LogOut, Menu } from "lucide-react"
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { useAuth } from '../lib/auth-context'
+import { MainNav } from '../components/layout/main-nav'
+import { Footer } from '../components/layout/footer'
+import { 
+  Bot, 
+  FileText, 
+  Home, 
+  Loader2, 
+  LogOut, 
+  Menu, 
+  Settings, 
+  MessagesSquare, 
+  Link as LinkIcon
+} from 'lucide-react'
 
 export default function DashboardLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   const router = useRouter()
-  const supabase = createClientComponentClient()
-  const [user, setUser] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { user, isLoading, signOut } = useAuth()
 
+  // Redirect to auth page if not logged in
   useEffect(() => {
     async function getUser() {
-      setLoading(true)
-      const { data: { session } } = await supabase.auth.getSession()
-      
-      if (!session) {
-        router.push("/auth")
-        return
+      if (!isLoading && !user) {
+        router.push('/auth')
       }
-      
-      setUser(session.user)
-      setLoading(false)
     }
-    
     getUser()
-  }, [router, supabase.auth])
+  }, [user, isLoading, router])
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.push("/")
-  }
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full"></div>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     )
   }
 
+  if (!user) {
+    return null
+  }
+
   return (
-    <div className="flex h-screen bg-background">
-      {/* Sidebar - Desktop */}
-      <aside className="w-64 border-r border-border bg-card hidden md:block">
-        <div className="p-6">
-          <Link href="/" className="text-xl font-bold">Nexoia</Link>
-        </div>
-        <nav className="space-y-1 px-3">
-          <Link href="/dashboard" className="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary">
-            <BarChart3 className="mr-3 h-5 w-5" />
-            Dashboard
-          </Link>
-          <Link href="/dashboard/bots" className="flex items-center px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
-            <Bot className="mr-3 h-5 w-5" />
-            Bots
-          </Link>
-          <Link href="/dashboard/manuals" className="flex items-center px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
-            <BookOpen className="mr-3 h-5 w-5" />
-            Manuales
-          </Link>
-          <Link href="/dashboard/profile" className="flex items-center px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
-            <UserCircle className="mr-3 h-5 w-5" />
-            Perfil
-          </Link>
-        </nav>
-      </aside>
-
-      {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <header className="bg-card border-b border-border h-16 flex items-center justify-between px-4 md:px-6">
-          <div className="flex items-center">
-            <button 
-              className="p-2 rounded-md md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-            <h1 className="text-lg font-medium ml-2 md:ml-0">Dashboard</h1>
+    <div className="flex flex-col min-h-screen">
+      <MainNav />
+      <div className="flex-1 flex flex-col md:flex-row">
+        {/* Sidebar */}
+        <aside className="w-full md:w-64 border-r bg-card md:flex flex-col hidden">
+          <div className="p-4 border-b">
+            <h2 className="font-medium">Dashboard</h2>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground hidden md:inline-block">
-              {user?.email}
-            </span>
-            <button 
-              onClick={handleSignOut}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          <nav className="flex-1 p-4 space-y-1">
+            <Link 
+              href="/dashboard" 
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
             >
-              <LogOut className="h-4 w-4 mr-2" />
-              <span className="hidden sm:inline-block">Cerrar sesión</span>
+              <Home className="h-4 w-4" />
+              <span>Home</span>
+            </Link>
+            <Link 
+              href="/dashboard/bots" 
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
+            >
+              <Bot className="h-4 w-4" />
+              <span>Mis Bots</span>
+            </Link>
+            <Link 
+              href="/dashboard/manuals" 
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
+            >
+              <FileText className="h-4 w-4" />
+              <span>Manuales</span>
+            </Link>
+            <Link 
+              href="/dashboard/links" 
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
+            >
+              <LinkIcon className="h-4 w-4" />
+              <span>Links de prueba</span>
+            </Link>
+            <Link 
+              href="/dashboard/messages" 
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
+            >
+              <MessagesSquare className="h-4 w-4" />
+              <span>Mensajes</span>
+            </Link>
+            <Link 
+              href="/dashboard/settings" 
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
+            >
+              <Settings className="h-4 w-4" />
+              <span>Configuración</span>
+            </Link>
+          </nav>
+          <div className="p-4 border-t">
+            <button 
+              onClick={() => signOut()}
+              className="flex w-full items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors text-muted-foreground hover:text-foreground"
+            >
+              <LogOut className="h-4 w-4" />
+              <span>Cerrar sesión</span>
             </button>
           </div>
-        </header>
-
+        </aside>
+        
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 top-16 z-50 md:hidden bg-background/80 backdrop-blur-sm">
-            <div className="fixed inset-y-0 left-0 w-3/4 max-w-xs bg-card border-r border-border p-6">
-              <nav className="space-y-3">
-                <Link 
-                  href="/dashboard" 
-                  className="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <BarChart3 className="mr-3 h-5 w-5" />
-                  Dashboard
-                </Link>
-                <Link 
-                  href="/dashboard/bots" 
-                  className="flex items-center px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Bot className="mr-3 h-5 w-5" />
-                  Bots
-                </Link>
-                <Link 
-                  href="/dashboard/manuals" 
-                  className="flex items-center px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <BookOpen className="mr-3 h-5 w-5" />
-                  Manuales
-                </Link>
-                <Link 
-                  href="/dashboard/profile" 
-                  className="flex items-center px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <UserCircle className="mr-3 h-5 w-5" />
-                  Perfil
-                </Link>
-              </nav>
-            </div>
-            <div 
-              className="fixed inset-0 bg-background/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-          </div>
-        )}
-
-        {/* Page content */}
-        <main className="flex-1 overflow-auto bg-secondary/10 p-4 md:p-6">
+        <div className="border-b p-4 md:hidden flex items-center">
+          <button className="flex items-center gap-2 text-sm">
+            <Menu className="h-5 w-5" />
+            <span>Menú</span>
+          </button>
+        </div>
+        
+        {/* Main Content */}
+        <main className="flex-1 p-4 md:p-8 overflow-auto">
           {children}
         </main>
       </div>
+      <Footer />
     </div>
   )
 }

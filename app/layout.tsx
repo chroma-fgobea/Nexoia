@@ -1,22 +1,27 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Providers from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nexoia - Chatbots Inteligentes para tu Documentación',
-  description: 'Plataforma para crear chatbots basados en manuales y documentación técnica utilizando IA',
+  title: 'Nexoia | Chatbots IA para documentación técnica',
+  description: 'Convierte tu documentación técnica en chatbots inteligentes que responden preguntas específicas de tus clientes o equipo.',
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }
